@@ -1,0 +1,608 @@
+
+{% extends "base.html" %}
+
+{% block title %}AirSense India | Intelligence Dashboard{% endblock %}
+
+{% block content %}
+
+<!-- =====================================================
+     WELCOME SECTION
+===================================================== -->
+
+<section class="welcome-section">
+
+    <div>
+        <div class="eyebrow">AIR QUALITY OVERVIEW</div>
+
+        <h2>
+            Understand the air.<br>
+            <span>Predict tomorrow.</span>
+        </h2>
+
+        <p>
+            Explore historical air pollution patterns across Indian cities
+            and generate machine-learning-powered next-day AQI predictions.
+        </p>
+    </div>
+
+    <div class="welcome-icon">
+        <i class="bi bi-cloud-haze2"></i>
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     HISTORICAL DATA NOTICE
+===================================================== -->
+
+<div class="data-notice">
+
+    <i class="bi bi-info-circle"></i>
+
+    <span>
+        Historical dataset mode: available observations are from
+        January 2015 to July 2020. This dashboard does not currently
+        provide live CPCB monitoring data.
+    </span>
+
+</div>
+
+
+<!-- =====================================================
+     ERROR MESSAGE
+===================================================== -->
+
+<div id="dashboardError"
+     class="error-message hidden"
+     role="alert">
+</div>
+
+
+<!-- =====================================================
+     OVERVIEW METRICS
+===================================================== -->
+
+<section class="metric-grid">
+
+    <div class="metric-card">
+
+        <div class="metric-top">
+            <span>MONITORED CITIES</span>
+            <i class="bi bi-buildings"></i>
+        </div>
+
+        <div class="metric-value" id="cityCount">--</div>
+
+        <div class="metric-description">
+            Cities represented in historical data
+        </div>
+
+    </div>
+
+
+    <div class="metric-card">
+
+        <div class="metric-top">
+            <span>AVERAGE LATEST AQI</span>
+            <i class="bi bi-wind"></i>
+        </div>
+
+        <div class="metric-value" id="averageAqi">--</div>
+
+        <div class="metric-description">
+            Mean of latest available city observations
+        </div>
+
+    </div>
+
+
+    <div class="metric-card">
+
+        <div class="metric-top">
+            <span>HISTORICAL RECORDS</span>
+            <i class="bi bi-database"></i>
+        </div>
+
+        <div class="metric-value" id="recordCount">--</div>
+
+        <div class="metric-description">
+            Available historical database records
+        </div>
+
+    </div>
+
+
+    <div class="metric-card">
+
+        <div class="metric-top">
+            <span>LATEST OBSERVATION</span>
+            <i class="bi bi-calendar3"></i>
+        </div>
+
+        <div class="metric-value date-value" id="latestDate">--</div>
+
+        <div class="metric-description">
+            Latest available observation date
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     INDIA AIR QUALITY MAP
+===================================================== -->
+
+<section class="section-block" id="map-section">
+
+    <div class="section-heading">
+
+        <div>
+            <div class="eyebrow">GEOGRAPHIC INTELLIGENCE</div>
+
+            <h3>India Air Quality Map</h3>
+
+            <p>
+                Latest available historical AQI by city.
+                Select a marker to explore its analytics.
+            </p>
+        </div>
+
+        <span class="section-tag">
+            <i class="bi bi-geo-alt"></i>
+            Historical city coverage
+        </span>
+
+    </div>
+
+
+    <div class="panel map-panel">
+
+        <div id="indiaMap"></div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     AI PREDICTION
+===================================================== -->
+
+<section class="section-block" id="prediction-section">
+
+    <div class="section-heading">
+
+        <div>
+            <div class="eyebrow">MACHINE LEARNING INTELLIGENCE</div>
+
+            <h3>AI AQI Prediction</h3>
+
+            <p>
+                Generate a next-day AQI estimate using the saved
+                Ridge Regression model and historical engineered features.
+            </p>
+        </div>
+
+        <span class="section-tag ai-tag">
+            <i class="bi bi-stars"></i>
+            Ridge Regression
+        </span>
+
+    </div>
+
+
+    <div class="panel prediction-panel">
+
+        <div class="prediction-form">
+
+            <div>
+
+                <label for="citySelect">
+                    Select a supported prediction city
+                </label>
+
+                <select
+                    id="citySelect"
+                    class="form-select"
+                    disabled
+                >
+
+                    <option value="">
+                        Loading supported cities...
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <button
+                class="primary-button"
+                id="predictButton"
+                type="button"
+                disabled
+            >
+
+                <i class="bi bi-lightning-charge"></i>
+
+                Predict AQI
+
+            </button>
+
+        </div>
+
+
+        <!-- Prediction Error -->
+
+        <div
+            id="predictionError"
+            class="error-message hidden"
+            role="alert"
+        ></div>
+
+
+        <!-- Prediction Result -->
+
+        <div
+            id="predictionResult"
+            class="prediction-result hidden"
+        >
+
+            <div class="prediction-main">
+
+                <div>
+
+                    <div class="eyebrow">
+                        PREDICTED NEXT-DAY AQI
+                    </div>
+
+                    <div
+                        class="prediction-number"
+                        id="predictedAqi"
+                    >
+                        --
+                    </div>
+
+                    <div
+                        class="prediction-category"
+                        id="predictedCategory"
+                    >
+                        --
+                    </div>
+
+                </div>
+
+
+                <div class="prediction-symbol">
+
+                    <i class="bi bi-cloud-haze2"></i>
+
+                </div>
+
+            </div>
+
+
+            <div class="prediction-details">
+
+                <div class="prediction-detail">
+
+                    <span>City</span>
+
+                    <strong id="predictionCity">--</strong>
+
+                </div>
+
+
+                <div class="prediction-detail">
+
+                    <span>Observation date</span>
+
+                    <strong id="observationDate">--</strong>
+
+                </div>
+
+
+                <div class="prediction-detail">
+
+                    <span>Forecast target date</span>
+
+                    <strong id="forecastDate">--</strong>
+
+                </div>
+
+
+                <div class="prediction-detail">
+
+                    <span>Latest observed AQI</span>
+
+                    <strong id="latestObservedAqi">--</strong>
+
+                </div>
+
+
+                <div class="prediction-detail">
+
+                    <span>Approximate lower bound</span>
+
+                    <strong id="lowerBound">--</strong>
+
+                </div>
+
+
+                <div class="prediction-detail">
+
+                    <span>Approximate upper bound</span>
+
+                    <strong id="upperBound">--</strong>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="prediction-note"
+                id="predictionNote"
+            ></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     HISTORICAL ANALYTICS
+===================================================== -->
+
+<section class="section-block" id="analytics-section">
+
+    <div class="section-heading">
+
+        <div>
+
+            <div class="eyebrow">HISTORICAL DATA ANALYTICS</div>
+
+            <h3>City Pollution Trends</h3>
+
+            <p>
+                Explore historical AQI and pollutant measurements
+                for individual cities.
+            </p>
+
+        </div>
+
+
+        <select
+            id="analyticsCity"
+            class="form-select city-filter"
+            disabled
+        >
+
+            <option value="">
+                Loading cities...
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <div class="analytics-grid">
+
+
+        <!-- AQI CHART -->
+
+        <div class="panel chart-panel">
+
+            <div class="panel-heading">
+
+                <div>
+
+                    <h4>AQI Historical Trend</h4>
+
+                    <p>
+                        Daily AQI observations
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div id="aqiChart"></div>
+
+        </div>
+
+
+        <!-- POLLUTANT CHART -->
+
+        <div class="panel chart-panel">
+
+            <div class="panel-heading">
+
+                <div>
+
+                    <h4>Pollutant Profile</h4>
+
+                    <p>
+                        Average available pollutant measurements
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div id="pollutantChart"></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     MODEL PERFORMANCE
+===================================================== -->
+
+<section class="section-block" id="model-section">
+
+    <div class="section-heading">
+
+        <div>
+
+            <div class="eyebrow">MODEL INTELLIGENCE</div>
+
+            <h3>Prediction Model Performance</h3>
+
+            <p>
+                Evaluation results from the completed chronological
+                validation and held-out test process.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="panel model-panel">
+
+
+        <!-- MODEL INFORMATION -->
+
+        <div class="model-header">
+
+            <div class="model-icon">
+
+                <i class="bi bi-cpu"></i>
+
+            </div>
+
+
+            <div>
+
+                <h4>Ridge Regression</h4>
+
+                <p>
+                    AirSense India next-day AQI prediction model
+                </p>
+
+            </div>
+
+
+            <span class="model-status">
+                Trained model
+            </span>
+
+        </div>
+
+
+        <!-- METRICS -->
+
+        <div class="model-metrics">
+
+
+            <div>
+
+                <span>Test MAE</span>
+
+                <strong id="modelMae">--</strong>
+
+            </div>
+
+
+            <div>
+
+                <span>Test RMSE</span>
+
+                <strong id="modelRmse">--</strong>
+
+            </div>
+
+
+            <div>
+
+                <span>Test R²</span>
+
+                <strong id="modelR2">--</strong>
+
+            </div>
+
+
+            <div>
+
+                <span>Input features</span>
+
+                <strong id="featureCount">--</strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="model-explanation">
+
+            MAE and RMSE measure prediction error in AQI units.
+            R² measures the proportion of target variance explained
+            by the model; it is not classification accuracy.
+
+        </div>
+
+
+        <!-- FEATURE IMPORTANCE -->
+
+        <div class="feature-explanation">
+
+            <h4>Top Predictive Features</h4>
+
+            <p>
+                Permutation importance from chronological validation.
+                Higher values indicate a larger increase in validation
+                error when a feature is shuffled.
+            </p>
+
+            <div id="featureChart"></div>
+
+            <div
+                id="featureChartMessage"
+                class="prediction-note"
+            ></div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     LOADING OVERLAY
+===================================================== -->
+
+<div
+    class="loading-overlay hidden"
+    id="loadingOverlay"
+>
+
+    <div class="loader"></div>
+
+    <span>
+        Loading AirSense intelligence...
+    </span>
+
+</div>
+
+
+{% endblock %}
+
+
+{% block scripts %}
+
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+
+{% endblock %}

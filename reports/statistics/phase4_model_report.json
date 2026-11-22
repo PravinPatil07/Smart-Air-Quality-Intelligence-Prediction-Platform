@@ -1,0 +1,48 @@
+{
+    "project": "AirSense India",
+    "task": "Next-day AQI prediction",
+    "best_model": "Ridge Regression",
+    "validation_metrics": {
+        "MAE": 35.76701613300522,
+        "RMSE": 72.29683400053071,
+        "R2": 0.8244381601052073
+    },
+    "test_metrics": {
+        "MAE": 23.62931414555988,
+        "RMSE": 43.63675519017141,
+        "R2": 0.8238105735037268
+    },
+    "validation_model_comparison": [
+        {
+            "Model": "Ridge Regression",
+            "Validation_MAE": 35.76701613300522,
+            "Validation_RMSE": 72.29683400053071,
+            "Validation_R2": 0.8244381601052073
+        },
+        {
+            "Model": "Random Forest",
+            "Validation_MAE": 33.49768539308133,
+            "Validation_RMSE": 74.18512501392419,
+            "Validation_R2": 0.8151475415220341
+        },
+        {
+            "Model": "XGBoost",
+            "Validation_MAE": 33.397059490379505,
+            "Validation_RMSE": 75.92728768362178,
+            "Validation_R2": 0.8063634495554995
+        },
+        {
+            "Model": "Dummy Baseline",
+            "Validation_MAE": 103.74380165289256,
+            "Validation_RMSE": 187.97176619864865,
+            "Validation_R2": -0.18679800987401496
+        }
+    ],
+    "training_rows": 16017,
+    "testing_rows": 8832,
+    "feature_count": 159,
+    "city_count": 26,
+    "validation_start_date": "2018-09-28",
+    "model_file": "D:\\AirSense-India\\models\\best_aqi_model.joblib",
+    "evaluation_strategy": "Chronological validation for model selection; untouched chronological test set for final evaluation."
+}

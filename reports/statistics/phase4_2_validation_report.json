@@ -1,0 +1,122 @@
+{
+    "project": "AirSense India",
+    "phase": "Phase 4.2 - Model Validation and Explainability",
+    "model": "Ridge Regression",
+    "training_records": 16017,
+    "testing_records": 8832,
+    "feature_count": 159,
+    "city_count": 19,
+    "chronological_validation_metrics": {
+        "MAE": 35.75624012439998,
+        "RMSE": 72.28548683210177,
+        "R2": 0.8244932655177651
+    },
+    "time_series_cv": [
+        {
+            "Fold": 1,
+            "Training_Records": 4966,
+            "Validation_Records": 2340,
+            "Validation_Start": "2017-03-15T00:00:00.000000",
+            "Validation_End": "2017-12-07T00:00:00.000000",
+            "MAE": 33.77940623305367,
+            "RMSE": 61.72535552293421,
+            "R2": 0.8204820020931967,
+            "Training_Time_Seconds": 0.17
+        },
+        {
+            "Fold": 2,
+            "Training_Records": 7306,
+            "Validation_Records": 4090,
+            "Validation_Start": "2017-12-08T00:00:00.000000",
+            "Validation_End": "2018-09-01T00:00:00.000000",
+            "MAE": 32.150620924863254,
+            "RMSE": 68.08934505285893,
+            "R2": 0.8135493692014686,
+            "Training_Time_Seconds": 0.25
+        },
+        {
+            "Fold": 3,
+            "Training_Records": 11396,
+            "Validation_Records": 4621,
+            "Validation_Start": "2018-09-02T00:00:00.000000",
+            "Validation_End": "2019-05-26T00:00:00.000000",
+            "MAE": 34.39552770302426,
+            "RMSE": 69.94650990168991,
+            "R2": 0.8311870578105669,
+            "Training_Time_Seconds": 0.38
+        }
+    ],
+    "test_metrics": {
+        "MAE": 23.649042197840572,
+        "RMSE": 43.66176526249877,
+        "R2": 0.823608552383705
+    },
+    "prediction_uncertainty": {
+        "nominal_coverage": 0.9,
+        "calibration_records": 4235,
+        "absolute_error_margin": 72.69201232247377,
+        "test_empirical_coverage": 0.950973731884058,
+        "test_records": 8832,
+        "interpretation": "Approximate historical error-based interval. Temporal distribution changes may affect coverage; this is not a guaranteed forecast range."
+    },
+    "top_10_features": [
+        {
+            "Feature": "CO",
+            "Importance_Mean": 54.55172288756151,
+            "Importance_Std": 0.9821187573167943
+        },
+        {
+            "Feature": "AQI_lag_1",
+            "Importance_Mean": 28.8423105030308,
+            "Importance_Std": 0.5394007179297385
+        },
+        {
+            "Feature": "PM2.5",
+            "Importance_Mean": 15.247369100963136,
+            "Importance_Std": 0.17813960750353236
+        },
+        {
+            "Feature": "CO_rolling_mean_3",
+            "Importance_Mean": 9.147181315714155,
+            "Importance_Std": 0.23166659647810853
+        },
+        {
+            "Feature": "AQI",
+            "Importance_Mean": 7.170150611406299,
+            "Importance_Std": 0.18201309149054337
+        },
+        {
+            "Feature": "PM2.5_rolling_mean_3",
+            "Importance_Mean": 4.156783016365789,
+            "Importance_Std": 0.06663645755357069
+        },
+        {
+            "Feature": "PM10",
+            "Importance_Mean": 3.749655030762611,
+            "Importance_Std": 0.10470749149601502
+        },
+        {
+            "Feature": "Toluene_rolling_mean_7",
+            "Importance_Mean": 3.652731693698352,
+            "Importance_Std": 0.06720828992428214
+        },
+        {
+            "Feature": "CO_lag_1",
+            "Importance_Mean": 3.2002252796212693,
+            "Importance_Std": 0.13780937098860374
+        },
+        {
+            "Feature": "AQI_lag_2",
+            "Importance_Mean": 3.087958363932818,
+            "Importance_Std": 0.2708517834256451
+        }
+    ],
+    "methodology_notes": [
+        "Validation uses chronological holdout data.",
+        "Time-series folds use expanding training windows.",
+        "Permutation importance uses validation data.",
+        "The final saved model is not retrained or overwritten.",
+        "Test metrics are an audit, not a model-selection criterion.",
+        "Prediction intervals are approximate and may not retain nominal coverage under temporal distribution changes."
+    ]
+}

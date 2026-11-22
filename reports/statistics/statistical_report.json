@@ -1,0 +1,233 @@
+{
+    "distribution": {
+        "PM2.5": {
+            "count": 24933,
+            "mean": 67.45057794890306,
+            "median": 48.57,
+            "std": 64.66144945715118,
+            "skewness": 3.3699598508656314,
+            "kurtosis": 21.132221587028493,
+            "p25": 28.82,
+            "p75": 80.59,
+            "p90": 139.89,
+            "p95": 193.96,
+            "p99": 311.064
+        },
+        "PM10": {
+            "count": 18391,
+            "mean": 118.12710293078135,
+            "median": 95.68,
+            "std": 90.6051097177945,
+            "skewness": 2.053189099644378,
+            "kurtosis": 6.747873493550078,
+            "p25": 56.254999999999995,
+            "p75": 149.745,
+            "p90": 231.88,
+            "p95": 303.34000000000003,
+            "p99": 444.60899999999987
+        },
+        "NO2": {
+            "count": 25946,
+            "mean": 28.56065906112696,
+            "median": 21.69,
+            "std": 24.47474579558943,
+            "skewness": 2.46455958981977,
+            "kurtosis": 11.211125002226416,
+            "p25": 11.75,
+            "p75": 37.62,
+            "p90": 58.155,
+            "p95": 74.125,
+            "p99": 117.12399999999994
+        },
+        "SO2": {
+            "count": 25677,
+            "mean": 14.531977255909956,
+            "median": 9.16,
+            "std": 18.133774845814578,
+            "skewness": 4.08365955475371,
+            "kurtosis": 22.067100595833917,
+            "p25": 5.67,
+            "p75": 15.22,
+            "p90": 29.68,
+            "p95": 46.207999999999885,
+            "p99": 102.67919999999984
+        },
+        "CO": {
+            "count": 27472,
+            "mean": 2.2485982090856145,
+            "median": 0.89,
+            "std": 6.962884254189265,
+            "skewness": 8.878321521748088,
+            "kurtosis": 109.4880502865043,
+            "p25": 0.51,
+            "p75": 1.45,
+            "p90": 2.63,
+            "p95": 8.02449999999997,
+            "p99": 34.53160000000004
+        },
+        "O3": {
+            "count": 25509,
+            "mean": 34.49143047551845,
+            "median": 30.84,
+            "std": 21.694928193444696,
+            "skewness": 1.330119322144908,
+            "kurtosis": 3.429464538159774,
+            "p25": 18.86,
+            "p75": 45.57,
+            "p90": 62.01200000000001,
+            "p95": 74.14199999999997,
+            "p99": 105.3211999999998
+        },
+        "AQI": {
+            "count": 24850,
+            "mean": 166.4635814889336,
+            "median": 118.0,
+            "std": 140.69658509414904,
+            "skewness": 3.396757197848103,
+            "kurtosis": 21.423727114339318,
+            "p25": 81.0,
+            "p75": 208.0,
+            "p90": 341.0,
+            "p95": 407.0,
+            "p99": 661.5099999999984
+        }
+    },
+    "outliers": [
+        {
+            "Pollutant": "PM2.5",
+            "Q1": 28.82,
+            "Q3": 80.59,
+            "IQR": 51.77,
+            "Lower_Bound": -48.835,
+            "Upper_Bound": 158.245,
+            "Outlier_Count": 1982,
+            "Outlier_Percentage": 7.949304135082019
+        },
+        {
+            "Pollutant": "PM10",
+            "Q1": 56.254999999999995,
+            "Q3": 149.745,
+            "IQR": 93.49000000000001,
+            "Lower_Bound": -83.98000000000002,
+            "Upper_Bound": 289.98,
+            "Outlier_Count": 1057,
+            "Outlier_Percentage": 5.747376434125387
+        },
+        {
+            "Pollutant": "NO2",
+            "Q1": 11.75,
+            "Q3": 37.62,
+            "IQR": 25.869999999999997,
+            "Lower_Bound": -27.054999999999993,
+            "Upper_Bound": 76.42499999999998,
+            "Outlier_Count": 1188,
+            "Outlier_Percentage": 4.5787404609573725
+        },
+        {
+            "Pollutant": "SO2",
+            "Q1": 5.67,
+            "Q3": 15.22,
+            "IQR": 9.55,
+            "Lower_Bound": -8.655000000000001,
+            "Upper_Bound": 29.545,
+            "Outlier_Count": 2578,
+            "Outlier_Percentage": 10.040113720450208
+        },
+        {
+            "Pollutant": "CO",
+            "Q1": 0.51,
+            "Q3": 1.45,
+            "IQR": 0.94,
+            "Lower_Bound": -0.8999999999999999,
+            "Upper_Bound": 2.86,
+            "Outlier_Count": 2475,
+            "Outlier_Percentage": 9.00917297612114
+        },
+        {
+            "Pollutant": "O3",
+            "Q1": 18.86,
+            "Q3": 45.57,
+            "IQR": 26.71,
+            "Lower_Bound": -21.205,
+            "Upper_Bound": 85.63499999999999,
+            "Outlier_Count": 713,
+            "Outlier_Percentage": 2.795091928339018
+        },
+        {
+            "Pollutant": "AQI",
+            "Q1": 81.0,
+            "Q3": 208.0,
+            "IQR": 127.0,
+            "Lower_Bound": -109.5,
+            "Upper_Bound": 398.5,
+            "Outlier_Count": 1358,
+            "Outlier_Percentage": 5.464788732394366
+        }
+    ],
+    "correlations": {
+        "PM2.5": {
+            "observations": 24172,
+            "pearson_correlation": 0.6591810111093791,
+            "pearson_p_value": 0.0,
+            "spearman_correlation": 0.8461841390260836,
+            "spearman_p_value": 0.0
+        },
+        "PM10": {
+            "observations": 17764,
+            "pearson_correlation": 0.8033134425895743,
+            "pearson_p_value": 0.0,
+            "spearman_correlation": 0.8706290871106316,
+            "spearman_p_value": 0.0
+        },
+        "NO2": {
+            "observations": 24459,
+            "pearson_correlation": 0.5370706906066127,
+            "pearson_p_value": 0.0,
+            "spearman_correlation": 0.4622951762379561,
+            "spearman_p_value": 0.0
+        },
+        "SO2": {
+            "observations": 24245,
+            "pearson_correlation": 0.4905857887170891,
+            "pearson_p_value": 0.0,
+            "spearman_correlation": 0.3793260248104581,
+            "spearman_p_value": 0.0
+        },
+        "CO": {
+            "observations": 24405,
+            "pearson_correlation": 0.6833461262507428,
+            "pearson_p_value": 0.0,
+            "spearman_correlation": 0.5494327484816467,
+            "spearman_p_value": 0.0
+        },
+        "O3": {
+            "observations": 24043,
+            "pearson_correlation": 0.1989905413869629,
+            "pearson_p_value": 3.113882126536734e-213,
+            "spearman_correlation": 0.2808863703504777,
+            "spearman_p_value": 0.0
+        }
+    },
+    "seasonal_test": {
+        "test": "Kruskal-Wallis",
+        "statistic": 4136.077628479684,
+        "p_value": 0.0,
+        "groups": {
+            "Winter": 6243,
+            "Summer": 7069,
+            "Monsoon": 7713,
+            "Post-Monsoon": 3825
+        },
+        "significance_level": 0.05,
+        "interpretation": "Evidence of a seasonal distribution difference",
+        "note": "This is a preliminary unadjusted test. Repeated observations and city-level differences should be considered before causal conclusions."
+    },
+    "city_test": {
+        "test": "Mann-Whitney U",
+        "city_1": "Delhi",
+        "city_2": "Bengaluru",
+        "u_statistic": 3484924.0,
+        "p_value": 0.0,
+        "interpretation": "Evidence of a difference in distributions"
+    }
+}

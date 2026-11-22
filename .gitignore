@@ -1,0 +1,37 @@
+
+# Python
+__pycache__/
+*.py[cod]
+*.log
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# IDE and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Raw datasets
+data/raw/
+
+# Generated processed datasets
+data/processed/
+
+# Local database
+database/*.db
+
+# Large generated prediction files
+reports/statistics/phase4_1_predictions.csv
+reports/statistics/phase4_predictions.csv
+
+# Jupyter
+.ipynb_checkpoints/
